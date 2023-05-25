@@ -1,0 +1,43 @@
+
+    {% block content %}
+<title>Cargo</title>
+
+<h1> Cargo</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+
+                  <th scope="col"> Title</th>
+                  <th scope="col">Products</th>
+                    <th scope="col"> Description</th>
+
+
+                </tr>
+            </thead>
+             <tbody>
+
+                    <td>  {{object.cargo_longtitude_pick_up}}</td>
+
+                    <td>{{object.product_latitude_pick_up}}</td>
+                    <td>{{object.product_latitude_delivery}}</td>
+
+
+            </tbody>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            {% for item in object.subject_set.all %}
+                            <p>{{item.product_content }}</p>
+                            <hr>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+{% endblock %}
