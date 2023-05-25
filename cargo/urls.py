@@ -1,13 +1,15 @@
 from django.urls import path, include
 
 from cargo.views import CargoListView, CargoCreateApiView, CarCreateApiView, CarUpdateApiView, \
-    CargoDetail, CarListApiView
+    CargoDetail, CarListApiView20, CarListApiView
 from get_location import show_location_byuniknumber
 
 urlpatterns = [
 
     path('cargo_list', CargoListView.as_view(), name='cargo'),
-    path('', CarListApiView.as_view(), name='cargo_list'),
+    path('', CarListApiView20.as_view(), name='cargo_list'),
+    path('car_list', CarListApiView.as_view(), name='cargo_list'),
+
     path('cargo_create', CargoCreateApiView.as_view(), name='cargo_create'),
     path('cargo_update/<int:pk>', CargoCreateApiView.as_view(), name='cargo_update'),
     path('funk1/<slug:slug>', CargoDetail.as_view(template_name='cargo/location_bynumber.html'), name='cargo_location'),

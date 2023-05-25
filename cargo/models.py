@@ -33,10 +33,11 @@ class Locations(models.Model):
 
 class Car(models.Model):
     # id = models.IntegerField(primary_key=True)
-    unik_number = models.CharField(default=unik_number_creation, editable=False)
+    slug = models.CharField(default=unik_number_creation, editable=False)
     latitude = models.DecimalField(max_digits=7, decimal_places=5)
     longtitude = models.DecimalField(max_digits=7, decimal_places=5)
-
+    weigh = models.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(0)],
+                                verbose_name='Вес', **NULLABLE)
     # location = models.PointField(geography=True, spatial_index=True)
 
 # https://stackoverflow.com/questions/48388366/i-want-to-add-a-location-field-in-django-model-which-take-location-input-by-putt\

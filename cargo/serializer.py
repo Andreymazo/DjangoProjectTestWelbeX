@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from rest_framework import serializers
 
 from cargo.management.commands.create_number import unik_number_creation
@@ -18,7 +19,7 @@ class CarSerializer(serializers.ModelSerializer):
     )
     latitude = serializers.DecimalField(max_digits=7, decimal_places=5)
     longtitude = serializers.DecimalField(max_digits=7, decimal_places=5)
-
+    weigh = serializers.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(0)],)
     class Meta:
         model = Car
         fields = '__all__'

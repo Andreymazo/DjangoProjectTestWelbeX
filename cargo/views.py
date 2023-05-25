@@ -36,6 +36,7 @@ class CargoListView(SingleTableView):
     # table_pagination = {"per_page": 5}
     queryset = Cargo.objects.all()
 
+
 class CargoListApiView(ListAPIView):
     # class LessonRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     serializer_class = CargoSerializer
@@ -65,10 +66,11 @@ class CargoDetail(DetailView):
         context['form'] = CargoForm
         return context
 
+
 class CarListApiView(ListAPIView):
     # class LessonRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     serializer_class = CarSerializer
-    queryset = Cargo.objects.all()
+    queryset = Car.objects.all()
 
 
 # class MultipleFieldLookupMixin:
@@ -99,20 +101,20 @@ from geopy.geocoders import Nominatim
 
 
 def generate_cars():
-        values = Car.objects.create(
-            unik_number=f'{unik_number_creation()}',
-            latitude=random.uniform(10.0, 75.0),
-            longtitude=random.uniform(10.0, 75.0),
-        )
-        # jj = [{"unik_number": f'{unik_number_creation}', "latitude": f'{random.uniform(10.0, 75.0)}',
-        #        "longtitude": f'{random.uniform(10.0, 75.0)}'}]
-        values.save()
-        # queryset = Car.objects.all()
-        # return queryset
+    values = Car.objects.create(
+        slug=f'{unik_number_creation()}',
+        latitude=random.uniform(10.0, 75.0),
+        longtitude=random.uniform(10.0, 75.0),
+
+    )
+    # jj = [{"unik_number": f'{unik_number_creation}', "latitude": f'{random.uniform(10.0, 75.0)}',
+    #        "longtitude": f'{random.uniform(10.0, 75.0)}'}]
+    values.save()
+    # queryset = Car.objects.all()
+    # return queryset
 
 
-class CarListApiView(ListAPIView):
-
+class CarListApiView20(ListAPIView):
     serializer_class = CarSerializer
 
     # queryset = Car.objects.all()
