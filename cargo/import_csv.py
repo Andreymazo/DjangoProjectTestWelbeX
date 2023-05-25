@@ -2,9 +2,9 @@ import psycopg2
 
 # connection establishment
 conn = psycopg2.connect(
-    database="cargo",
+    database="newdb",
     user='postgres',
-    password='password',
+    password='123456',
     host='localhost',
     port='5432'
 )

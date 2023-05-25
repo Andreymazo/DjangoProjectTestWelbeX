@@ -47,7 +47,7 @@ class Command(BaseCommand):
 
         # connection establishment
         conn = psycopg2.connect(
-            database="cargo",
+            database="newdb",
             user='postgres',
             password='123456',
             host='localhost',

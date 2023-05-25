@@ -27,10 +27,9 @@ class Locations(models.Model):
     city = models.CharField(max_length=50, verbose_name="Место доставки")
     state = models.CharField(max_length=50, verbose_name="Место доставки")
     zip = models.CharField(max_length=50, verbose_name="почтовый индекс")
-    latitude = models.DecimalField(max_digits=7, decimal_places=5)
-    longtitude = models.DecimalField(max_digits=7, decimal_places=5)
-    weigh = models.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(0)],
-                                verbose_name='Вес', **NULLABLE)
+    latitude = models.CharField(max_length=50, verbose_name="Место доставки")
+    longtitude = models.CharField(max_length=50, verbose_name="Место доставки")
+
 
 class Car(models.Model):
     # id = models.IntegerField(primary_key=True)
