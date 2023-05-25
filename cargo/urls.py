@@ -6,11 +6,13 @@ from get_location import show_location_byuniknumber
 
 urlpatterns = [
 
-    # path('', CargoListView.as_view(), name='cargo'),
+    path('cargo_list', CargoListView.as_view(), name='cargo'),
     path('', CarListApiView.as_view(), name='cargo_list'),
     path('cargo_create', CargoCreateApiView.as_view(), name='cargo_create'),
     path('cargo_update/<int:pk>', CargoCreateApiView.as_view(), name='cargo_update'),
     path('funk1/<slug:slug>', CargoDetail.as_view(template_name='cargo/location_bynumber.html'), name='cargo_location'),
+    # path('funk2/<slug:slug>', CarListLess450.as_view(template_name='cargo/location_bynumber.html'), name='cargo_location'),
+    # path('funk3/<slug:slug>', CargoDetailWithAllCarsDistanc.as_view(template_name='cargo/location_bynumber.html'), name='cargo_location'),
 
 
     path('car_create', CarCreateApiView.as_view(), name='car_create'),

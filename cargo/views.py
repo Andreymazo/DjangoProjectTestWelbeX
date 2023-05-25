@@ -31,7 +31,10 @@ class CargoListView(SingleTableView):
     model = Cargo
     table_class = CargoTable
     template_name = 'cargo/cargo_list.html'
-
+    # generate_values()
+    # ordering = ('',)  # quantity, name
+    # table_pagination = {"per_page": 5}
+    queryset = Cargo.objects.all()
 
 class CargoListApiView(ListAPIView):
     # class LessonRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
@@ -57,6 +60,10 @@ class CargoDetail(DetailView):
     model = Cargo
     form_class = CargoForm
 
+    def get_context_data(self, **kwargs):
+        context = super(CargoDetail, self).get_context_data(**kwargs)
+        context['form'] = CargoForm
+        return context
 
 class CarListApiView(ListAPIView):
     # class LessonRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
