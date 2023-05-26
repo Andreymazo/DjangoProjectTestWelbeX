@@ -61,16 +61,50 @@ class CargoDetail(DetailView):
     model = Cargo
     form_class = CargoForm
 
-    def get_context_data(self, **kwargs):
-        context = super(CargoDetail, self).get_context_data(**kwargs)
-        context['form'] = CargoForm
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(CargoDetail, self).get_context_data(**kwargs)
+    #     context['form'] = CargoForm
+    #     return context
 
 
 class CarListApiView(ListAPIView):
     # class LessonRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     serializer_class = CarSerializer
     queryset = Car.objects.all()
+
+
+def distance_to_point(lp1, lop1, lp2, lop2):#Берет координаты двух точек, выдает расстояние между ними
+    lat_point1 = lp1
+    lon_point1 = lop1
+    location1 = f"{lat_point1}, {lon_point1}"
+    lat_point2 = lp2
+    lon_point2 = lop2
+    location2 = f"{lat_point2}, {lon_point2}"
+    from geopy.distance import distance
+    dist = distance(location1, location2).miles
+    # print('Расстояние в милях ', dist)
+    return dist
+
+
+class CarListLess450(ListAPIView):
+    serializer_class = CarSerializer
+
+    # queryset = Car.objects.all()
+    def get_queryset(self):
+        if self.request.method == "GET":
+            cargo_item = Cargo.objects.all().first()
+            queryset = Car.objects.all()
+
+            for i in queryset:
+                ii = distance_to_point(i.latitude, i.longtitude, cargo_item.latitude_pick_up, cargo_item.longtitude_pick_up)
+                print('____________________________________________',i, ii)
+                if isinstance(ii, float) and ii < 2800.00:
+                    # instance = get_object_or_404(Car, id=i.id)
+                    # instance.delete()
+                    print('queryset.filter(pk=i.pk)', queryset.filter(pk=i.pk))
+                    queryset.get(pk=i.pk).delete()
+
+            return queryset
 
 
 # class MultipleFieldLookupMixin:
@@ -117,15 +151,15 @@ def generate_cars():
 class CarListApiView20(ListAPIView):
     serializer_class = CarSerializer
 
-    # queryset = Car.objects.all()
-    def get_queryset(self, **kwargs):
-
-        if self.request.method == "GET":
-            Car.objects.all().delete()
-            for i in range(0, 20):
-                generate_cars()
-        queryset = Car.objects.all()
-        return queryset
+    queryset = Car.objects.all()
+    # def get_queryset(self, **kwargs):
+    #
+    #     if self.request.method == "GET":
+    #         Car.objects.all().delete()
+    #         for i in range(0, 20):
+    #             generate_cars()
+    #     queryset = Car.objects.all()
+    #     return queryset
 
 
 class CarCreateApiView(CreateAPIView):
