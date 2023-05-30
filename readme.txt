@@ -35,8 +35,8 @@ WelbeX
 7. удаление груза по ID на эндпоинте
 _____________________________________________
 8. Фильтрация по милям во вьюхе на эндпоинте cargo_list (отрисовывает django-tables2), реализовано во вьюхе:
-filterset_fields = ['weigh', f'{distance_to_point(Cargo.latitude_pick_up, Cargo.longtitude_pick_up,
-Car.latitude, Car.longtitude)}'] не работает пока
+filterset_fields = ['weigh', f'{distance_to_point(j.latitude_pick_up, j.longtitude_pick_up,
+i.latitude, i.longtitude)}']
 9. Автоматическое обновление локаций всех машин раз в 3 минуты (локация меняется на другую случайную).
 car_create Это реализуется на эндпоинте " ", то есть сразу куда перебрасывается, но не в фоновом режиме. Можно это
 исполнить подгрузив селери и прописав таску в файле tasks.py это не сложно, функция написана, в админке надо только
