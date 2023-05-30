@@ -32,7 +32,7 @@ WelbeX
 4. На эндпоинте car_update/<int:pk> изменяем поля машины, кроме ее слага.
 5. Локация машины выводится по введенному слагу на энпоинте car_location/<slug:slug>
 6. Редактирование груза по ID (вес, описание); на эндпоинте cargo_update/<int:pk>
-7. удаление груза по ID на эндпоинте
+7. удаление груза по ID на эндпоинте carпo_delete/<int:pk>
 _____________________________________________
 8. Фильтрация по милям во вьюхе на эндпоинте cargo_list (отрисовывает django-tables2), реализовано во вьюхе:
 filterset_fields = ['weigh', f'{distance_to_point(j.latitude_pick_up, j.longtitude_pick_up,
