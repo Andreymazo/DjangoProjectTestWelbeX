@@ -1,0 +1,33 @@
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+    <head>
+        <title>List of cargo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <head>
+    <meta charset="ISO-8859-1">
+    <style type="text/css">
+
+     table.center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+      td {
+                border: 2px solid rgb(100, 100, 218);
+             }
+             .table-container {
+                width: 70vw;
+             }
+             body{
+                display: grid;
+                place-items: center;
+             }
+    </style>
+    <title>Table with css</title>
+    </head>
+
+    </head>
+    <body>
+        {% render_table table %}
+    </body>
+</html>

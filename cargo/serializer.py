@@ -34,4 +34,5 @@ class CarSerializer(serializers.ModelSerializer):
         ###Меняем лонгтитуд и латитуд, а юникномер остается прежний###############3
         instance.longtitude = validated_data.get('longtitude', instance.longtitude)
         instance.latitude = validated_data.get('latitude', instance.latitude)
+        instance.weigh = validated_data.get('weigh', instance.weigh)
         return instance

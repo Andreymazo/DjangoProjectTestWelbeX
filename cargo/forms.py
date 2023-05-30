@@ -1,6 +1,6 @@
 from django import forms
 
-from cargo.models import Cargo
+from cargo.models import Cargo, Car
 
 
 class CargoForm(forms.ModelForm):
@@ -12,3 +12,9 @@ class CargoForm(forms.ModelForm):
         #
         #     for name, field in self.fields.items():
         #         field.widgets.attrs['class'] = 'form-control'
+
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = '__all__'
