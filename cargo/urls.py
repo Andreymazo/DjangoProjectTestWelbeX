@@ -1,10 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 
 from cargo.views import CargoListView, CargoCreateApiView, CarCreateApiView, CarUpdateApiView, \
     CargoDetail, CarListApiView20, CarListApiView, CarListLess450, CargoDetailWithAllCarsDistance, CarRetrieveAPIView, \
     CargoDestroyAPIView
 
-from get_location import show_location_byuniknumber
 
 urlpatterns = [
 
@@ -21,7 +20,5 @@ urlpatterns = [
     path('car_update/<int:pk>', CarUpdateApiView.as_view(), name='car_update'),
     path('car_location/<slug:slug>', CarRetrieveAPIView.as_view(), name='car_update'),
     path('carпo_delete/<int:pk>', CargoDestroyAPIView.as_view(), name='car_update'),
-
-# path('car_update/<int:pk>', CarUpdateApiView.as_view(), name='car_update'),
 
 ]
